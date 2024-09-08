@@ -125,8 +125,12 @@ function craft() {
     console.log(ShardArray)
 }
 
-push("common", 50)
+push("common", 29)
+push("uncommon", 20)
+push("rare", 32)
+push("epic", 41)
+push("legendary", 17)
 
-dismantle()
+//dismantle()
 
 //craft()
