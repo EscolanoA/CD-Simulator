@@ -6,6 +6,7 @@ let ShardDisplay = document.getElementById("ShardDisplay")
 
 let DismantleButton = document.getElementById("DismantleButton")
 let CraftButton = document.getElementById("CraftButton")
+let ResetButton = document.getElementById("ResetButton")
 
 
 function dismantle() {
@@ -104,42 +105,42 @@ function craft() {
     alert("You don't have enough shards to craft anything")
     return
   }
+
+  if (ShardArray.GodlyShard >= 25) {
+    let AvailableShardForCraft = (Math.floor(ShardArray.GodlyShard/25)) * 25
+    push("godly", AvailableShardForCraft/25)
+    ShardArray.GodlyShard = ShardArray.GodlyShard - AvailableShardForCraft
+  }
+
+  if (ShardArray.LegendaryShard >= 20) {
+    let AvailableShardForCraft = (Math.floor(ShardArray.LegendaryShard/20)) * 20
+    push("legendary", AvailableShardForCraft/20)
+    ShardArray.LegendaryShard = ShardArray.LegendaryShard - AvailableShardForCraft
+  }
+
+  if (ShardArray.EpicShard >= 15) {
+    let AvailableShardForCraft = (Math.floor(ShardArray.EpicShard/15)) * 15
+    push("epic", AvailableShardForCraft/15)
+    ShardArray.EpicShard = ShardArray.EpicShard - AvailableShardForCraft
+  }
+
+  if (ShardArray.RareShard >= 15) {
+    let AvailableShardForCraft = (Math.floor(ShardArray.RareShard/15)) * 15
+    push("rare", AvailableShardForCraft/15)
+    ShardArray.RareShard = ShardArray.RareShard - AvailableShardForCraft
+  }
+
+  if (ShardArray.UncommonShard >= 10) {
+    let AvailableShardForCraft = (Math.floor(ShardArray.UncommonShard/10)) * 10
+    push("uncommon", AvailableShardForCraft/10)
+    ShardArray.UncommonShard = ShardArray.UncommonShard - AvailableShardForCraft
+  }
+
   if (ShardArray.CommonShard >= 10) {
     let AvailableShardForCraft = (Math.floor(ShardArray.CommonShard/10)) * 10
     push("common", AvailableShardForCraft/10)
     ShardArray.CommonShard = ShardArray.CommonShard - AvailableShardForCraft
   }
-  /*
-    if (ShardArray.CommonShard >= 10) {
-        push("common", 1)
-        ShardArray.CommonShard = ShardArray.CommonShard - 10
-        ShardArray.TotalShard = ShardArray.TotalShard - 10
-    }
-    if (ShardArray.UncommonShard >= 10) {
-        push("uncommon", 1)
-        ShardArray.UncommonShard = ShardArray.UncommonShard - 10
-        ShardArray.TotalShard = ShardArray.TotalShard - 10
-    }
-    if (ShardArray.RareShard >= 15) {
-        push("rare", 1)
-        ShardArray.RareShard = ShardArray.RareShard - 15
-        ShardArray.TotalShard = ShardArray.TotalShard - 15
-    }
-    if (ShardArray.EpicShard >= 15) {
-        push("epic", 1)
-        ShardArray.EpicShard = ShardArray.EpicShard - 15
-        ShardArray.TotalShard = ShardArray.TotalShard - 15
-    }
-    if (ShardArray.LegendaryShard >= 20) {
-        push("legendary", 1)
-        ShardArray.LegendaryShard = ShardArray.LegendaryShard - 20
-        ShardArray.TotalShard = ShardArray.TotalShard - 20
-    }
-    if (ShardArray.GodlyShard >= 25) {
-        push("godly", 1)
-        ShardArray.GodlyShard = ShardArray.GodlyShard - 25
-        ShardArray.TotalShard = ShardArray.TotalShard - 25
-    }*/
     console.log("Newly crafter swords from ShardArray")
     console.log(SwordArray)
     console.log("Shards left after crafting ShardArray")
@@ -157,8 +158,19 @@ function updateShardDisplay() {
 }
 
 updateShardDisplay()
-push("common", 20)
+push("common", 500)
 updateSwordDisplay()
 
 DismantleButton.addEventListener("click", dismantle)
 CraftButton.addEventListener("click", craft)
+ResetButton.addEventListener("click", function() {
+  SwordArray = []
+  ShardArray.CommonShard = 0
+  ShardArray.UncommonShard = 0
+  ShardArray.RareShard = 0
+  ShardArray.EpicShard = 0
+  ShardArray.LegendaryShard = 0
+  ShardArray.GodlyShard = 0
+  updateShardDisplay()
+  updateSwordDisplay()
+})
