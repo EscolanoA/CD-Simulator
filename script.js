@@ -104,38 +104,42 @@ function craft() {
     alert("You don't have enough shards to craft anything")
     return
   }
-    for (let i = 0; i < ShardArray.TotalShard; i++) {
-        if (ShardArray.CommonShard >= 10) {
-            push("common", 1)
-            ShardArray.CommonShard = ShardArray.CommonShard - 10
-            ShardArray.TotalShard = ShardArray.TotalShard - 10
-        }
-        if (ShardArray.UncommonShard >= 10) {
-            push("uncommon", 1)
-            ShardArray.UncommonShard = ShardArray.UncommonShard - 10
-            ShardArray.TotalShard = ShardArray.TotalShard - 10
-        }
-        if (ShardArray.RareShard >= 15) {
-            push("rare", 1)
-            ShardArray.RareShard = ShardArray.RareShard - 15
-            ShardArray.TotalShard = ShardArray.TotalShard - 15
-        }
-        if (ShardArray.EpicShard >= 15) {
-            push("epic", 1)
-            ShardArray.EpicShard = ShardArray.EpicShard - 15
-            ShardArray.TotalShard = ShardArray.TotalShard - 15
-        }
-        if (ShardArray.LegendaryShard >= 20) {
-            push("legendary", 1)
-            ShardArray.LegendaryShard = ShardArray.LegendaryShard - 20
-            ShardArray.TotalShard = ShardArray.TotalShard - 20
-        }
-        if (ShardArray.GodlyShard >= 25) {
-            push("godly", 1)
-            ShardArray.GodlyShard = ShardArray.GodlyShard - 25
-            ShardArray.TotalShard = ShardArray.TotalShard - 25
-        }
+  if (ShardArray.CommonShard >= 10) {
+    let AvailableShardForCraft = (Math.floor(ShardArray.CommonShard/10)) * 10
+    push("common", AvailableShardForCraft/10)
+    ShardArray.CommonShard = ShardArray.CommonShard - AvailableShardForCraft
+  }
+  /*
+    if (ShardArray.CommonShard >= 10) {
+        push("common", 1)
+        ShardArray.CommonShard = ShardArray.CommonShard - 10
+        ShardArray.TotalShard = ShardArray.TotalShard - 10
     }
+    if (ShardArray.UncommonShard >= 10) {
+        push("uncommon", 1)
+        ShardArray.UncommonShard = ShardArray.UncommonShard - 10
+        ShardArray.TotalShard = ShardArray.TotalShard - 10
+    }
+    if (ShardArray.RareShard >= 15) {
+        push("rare", 1)
+        ShardArray.RareShard = ShardArray.RareShard - 15
+        ShardArray.TotalShard = ShardArray.TotalShard - 15
+    }
+    if (ShardArray.EpicShard >= 15) {
+        push("epic", 1)
+        ShardArray.EpicShard = ShardArray.EpicShard - 15
+        ShardArray.TotalShard = ShardArray.TotalShard - 15
+    }
+    if (ShardArray.LegendaryShard >= 20) {
+        push("legendary", 1)
+        ShardArray.LegendaryShard = ShardArray.LegendaryShard - 20
+        ShardArray.TotalShard = ShardArray.TotalShard - 20
+    }
+    if (ShardArray.GodlyShard >= 25) {
+        push("godly", 1)
+        ShardArray.GodlyShard = ShardArray.GodlyShard - 25
+        ShardArray.TotalShard = ShardArray.TotalShard - 25
+    }*/
     console.log("Newly crafter swords from ShardArray")
     console.log(SwordArray)
     console.log("Shards left after crafting ShardArray")
