@@ -1,7 +1,18 @@
 let SwordArray = [];
 let ShardArray = {"CommonShard": 0, "UncommonShard": 0, "RareShard": 0, "EpicShard": 0, "LegendaryShard": 0, "GodlyShard": 0, "TotalShard" : 0}
 
+let SwordDisplay = document.getElementById("SwordDisplay")
+let ShardDisplay = document.getElementById("ShardDisplay")
+
+let DismantleButton = document.getElementById("DismantleButton")
+let CraftButton = document.getElementById("CraftButton")
+
+
 function dismantle() {
+  if (SwordArray.length === 0) {
+    alert("You have no sword to dismantle")
+    return
+  }
     console.log("SwordArray before dismantle")
     console.log(SwordArray)
   for (let i = 0; i < SwordArray.length; i++) {
@@ -78,6 +89,8 @@ function dismantle() {
   console.log("Shard ammount result from dismantling SwordArray")
   console.log(ShardArray)
   SwordArray = []
+  updateSwordDisplay()
+  updateShardDisplay()
 }
 
 function push(type, number) {
@@ -87,6 +100,10 @@ function push(type, number) {
 }
 
 function craft() {
+  if (ShardArray.CommonShard < 10 && ShardArray.UncommonShard < 10 && ShardArray.RareShard < 15 && ShardArray.EpicShard < 15 && ShardArray.LegendaryShard < 20 && ShardArray.GodlyShard < 20) {
+    alert("You don't have enough shards to craft anything")
+    return
+  }
     for (let i = 0; i < ShardArray.TotalShard; i++) {
         if (ShardArray.CommonShard >= 10) {
             push("common", 1)
@@ -123,10 +140,21 @@ function craft() {
     console.log(SwordArray)
     console.log("Shards left after crafting ShardArray")
     console.log(ShardArray)
+    updateSwordDisplay()
+    updateShardDisplay()
 }
 
-push("common", 50)
+function updateSwordDisplay() {
+  SwordDisplay.innerHTML = "Inventory : <br>" + SwordArray.toString()
+}
 
-dismantle()
+function updateShardDisplay() {
+  ShardDisplay.innerHTML = "Common Shards : " + ShardArray.CommonShard + "<br>Uncommon Shards : " + ShardArray.UncommonShard + "<br>Rare Shards : " + ShardArray.RareShard + "<br>Epic Shards : " + ShardArray.EpicShard + "<br>Legendary Shards : " + ShardArray.LegendaryShard + "<br>Godly Shards : " + ShardArray.GodlyShard
+}
 
-//craft()
+updateShardDisplay()
+push("common", 20)
+updateSwordDisplay()
+
+DismantleButton.addEventListener("click", dismantle)
+CraftButton.addEventListener("click", craft)
