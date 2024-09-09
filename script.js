@@ -7,6 +7,8 @@ let ShardDisplay = document.getElementById("ShardDisplay")
 let DismantleButton = document.getElementById("DismantleButton")
 let CraftButton = document.getElementById("CraftButton")
 let ResetButton = document.getElementById("ResetButton")
+let AddSwordButton = document.getElementById("AddSwordButton")
+let AddShardButton = document.getElementById("AddShardButton")
 
 
 function dismantle() {
@@ -158,11 +160,11 @@ function updateShardDisplay() {
 }
 
 updateShardDisplay()
-push("common", 500)
 updateSwordDisplay()
 
 DismantleButton.addEventListener("click", dismantle)
 CraftButton.addEventListener("click", craft)
+
 ResetButton.addEventListener("click", function() {
   SwordArray = []
   ShardArray.CommonShard = 0
@@ -171,6 +173,52 @@ ResetButton.addEventListener("click", function() {
   ShardArray.EpicShard = 0
   ShardArray.LegendaryShard = 0
   ShardArray.GodlyShard = 0
+  updateShardDisplay()
+  updateSwordDisplay()
+})
+
+AddSwordButton.addEventListener("click", function() {
+  if (document.getElementById("AddCommonSwordInput").value >0) {
+    push("common", document.getElementById("AddCommonSwordInput").value)
+  }
+  if (document.getElementById("AddUncommonSwordInput").value >0) {
+    push("uncommon", document.getElementById("AddUncommonSwordInput").value)
+  }
+  if (document.getElementById("AddRareSwordInput").value >0) {
+    push("rare", document.getElementById("AddRareSwordInput").value)
+  }
+  if (document.getElementById("AddEpicSwordInput").value >0) {
+    push("epic", document.getElementById("AddEpicSwordInput").value)
+  }
+  if (document.getElementById("AddLegendarySwordInput").value >0) {
+    push("legendary", document.getElementById("AddLegendarySwordInput").value)
+  }
+  if (document.getElementById("AddGodlySwordInput").value >0) {
+    push("godly", document.getElementById("AddGodlyInput").value)
+  }
+  updateShardDisplay()
+  updateSwordDisplay()
+})
+
+AddShardButton.addEventListener("click", function() {
+  if (document.getElementById("AddCommonShardInput").value >0) {
+    ShardArray.CommonShard = ShardArray.CommonShard + Number(document.getElementById("AddCommonShardInput").value)
+  }
+  if (document.getElementById("AddUncommonShardInput").value >0) {
+    ShardArray.UncommonShard = ShardArray.UncommonShard + Number(document.getElementById("AddUncommonShardInput").value)
+  }
+  if (document.getElementById("AddRareShardInput").value >0) {
+    ShardArray.RareShard = ShardArray.RareShard + Number(document.getElementById("AddRareShardInput").value)
+  }
+  if (document.getElementById("AddEpicShardInput").value >0) {
+    ShardArray.EpicShard = ShardArray.EpicShard + Number(document.getElementById("AddEpicShardInput").value)
+  }
+  if (document.getElementById("AddLegendaryShardInput").value >0) {
+    ShardArray.LegendaryShard = ShardArray.LegendaryShard + Number(document.getElementById("AddLegendaryShardInput").value)
+  }
+  if (document.getElementById("AddGodlyShardInput").value >0) {
+    ShardArray.GodlyShard = ShardArray.GodlyShard + Number(document.getElementById("AddGodlyShardInput").value)
+  }
   updateShardDisplay()
   updateSwordDisplay()
 })
