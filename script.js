@@ -173,6 +173,18 @@ updateSwordDisplay()
 DismantleButton.addEventListener("click", dismantle)
 CraftButton.addEventListener("click", craft)
 
+ResetButton.addEventListener("click", function() {
+  SwordArray = []
+  ShardArray.CommonShard = 0
+  ShardArray.UncommonShard = 0
+  ShardArray.RareShard = 0
+  ShardArray.EpicShard = 0
+  ShardArray.LegendaryShard = 0
+  ShardArray.GodlyShard = 0
+  updateShardDisplay()
+  updateSwordDisplay()
+})
+
 AddSwordButton.addEventListener("click", function() {
   if (document.getElementById("AddCommonSwordInput").value >0) {
     push("common", document.getElementById("AddCommonSwordInput").value)
