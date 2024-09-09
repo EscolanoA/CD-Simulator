@@ -160,7 +160,7 @@ function updateSwordDisplay() {
   let legendarySwordAmount = SwordArray.filter(x => x==="legendary").length
   let godlySwordAmount = SwordArray.filter(x => x==="godly").length
   SwordDisplay.innerHTML ="<h2>Inventory :</h2> <br>" + SwordArray.toString() + "<br>"
-  SwordAmountDisplay.innerHTML = SwordAmountDisplay.innerHTML + "Common swords : " + commonSwordAmount + " Uncommon swords : " + uncommonSwordAmount + " Rare swords : " + rareSwordAmount + " Epic swords : " + epicSwordAmount + " Legendary swords : " + legendarySwordAmount + " Godly swords : " + godlySwordAmount + "</br>"
+  SwordAmountDisplay.innerHTML = "Common swords : " + commonSwordAmount + " Uncommon swords : " + uncommonSwordAmount + " Rare swords : " + rareSwordAmount + " Epic swords : " + epicSwordAmount + " Legendary swords : " + legendarySwordAmount + " Godly swords : " + godlySwordAmount + "</br>"
 }
 
 function updateShardDisplay() {
