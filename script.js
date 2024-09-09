@@ -145,11 +145,11 @@ function craft() {
 }
 
 function updateSwordDisplay() {
-  SwordDisplay.innerHTML = "Inventory : <br>" + SwordArray.toString()
+  SwordDisplay.innerHTML = "<h2>Inventory</h2><br>" + SwordArray.toString()
 }
 
 function updateShardDisplay() {
-  ShardDisplay.innerHTML = "Common Shards : " + ShardArray.CommonShard + "<br>Uncommon Shards : " + ShardArray.UncommonShard + "<br>Rare Shards : " + ShardArray.RareShard + "<br>Epic Shards : " + ShardArray.EpicShard + "<br>Legendary Shards : " + ShardArray.LegendaryShard + "<br>Godly Shards : " + ShardArray.GodlyShard
+  ShardDisplay.innerHTML = "<h2>Shards</h2><br> Common Shards : " + ShardArray.CommonShard + "<br>Uncommon Shards : " + ShardArray.UncommonShard + "<br>Rare Shards : " + ShardArray.RareShard + "<br>Epic Shards : " + ShardArray.EpicShard + "<br>Legendary Shards : " + ShardArray.LegendaryShard + "<br>Godly Shards : " + ShardArray.GodlyShard
 }
 
 updateShardDisplay()
