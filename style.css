@@ -50,3 +50,22 @@ body {
 #CraftButton {
     background-color: #55AAFF;
 }
+
+commonsword {
+    color: #bfbfbf;
+}
+uncommonsword {
+    color: #50f050;
+}
+raresword {
+    color: #50a0f0;
+}
+epicsword {
+    color: #a050f0;
+}
+legendarysword {
+    color: #ff9124;
+}
+godlysword {
+    color: #ef4f4f;
+}
