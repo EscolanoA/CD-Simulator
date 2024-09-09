@@ -152,7 +152,14 @@ function craft() {
 }
 
 function updateSwordDisplay() {
-  SwordDisplay.innerHTML = "Inventory : <br>" + SwordArray.toString()
+  let commonSwordAmount = SwordArray.filter(x => x==="common").length
+  let uncommonSwordAmount = SwordArray.filter(x => x==="uncommon").length
+  let rareSwordAmount = SwordArray.filter(x => x==="rare").length
+  let epicSwordAmount = SwordArray.filter(x => x==="epic").length
+  let legendarySwordAmount = SwordArray.filter(x => x==="legendary").length
+  let godlySwordAmount = SwordArray.filter(x => x==="godly").length
+  SwordDisplay.innerHTML ="Inventory : <br>" + SwordArray.toString() + "<br>"
+  SwordDisplay.innerHTML = SwordDisplay.innerHTML + "Common swords : " + commonSwordAmount + " Uncommon swords : " + uncommonSwordAmount + " Rare swords : " + rareSwordAmount + " Epic swords : " + epicSwordAmount + " Legendary swords : " + legendarySwordAmount + " Godly swords : " + godlySwordAmount + "</br>"
 }
 
 function updateShardDisplay() {
