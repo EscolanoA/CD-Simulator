@@ -51,21 +51,21 @@ body {
     background-color: #55AAFF;
 }
 
-commonsword {
+commonraritycolor {
     color: #bfbfbf;
 }
-uncommonsword {
+uncommonraritycolor {
     color: #50f050;
 }
-raresword {
+rareraritycolor {
     color: #50a0f0;
 }
-epicsword {
+epicraritycolor {
     color: #a050f0;
 }
-legendarysword {
+legendaryraritycolor {
     color: #ff9124;
 }
-godlysword {
+godlyraritycolor {
     color: #ef4f4f;
 }

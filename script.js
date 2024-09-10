@@ -1,9 +1,9 @@
 let SwordArray = [];
 let ShardArray = {"CommonShard": 0, "UncommonShard": 0, "RareShard": 0, "EpicShard": 0, "LegendaryShard": 0, "GodlyShard": 0, "TotalShard" : 0}
 
-let ShardDisplay = document.getElementById("ShardDisplay")
+let ShardInventory = document.getElementById("ShardInventory")
 let SwordAmountDisplay = document.getElementById("SwordAmountDisplay")
-let Inventory = document.getElementById("Inventory")
+let SwordInventory = document.getElementById("SwordInventory")
 
 let DismantleButton = document.getElementById("DismantleButton")
 let CraftButton = document.getElementById("CraftButton")
@@ -93,8 +93,8 @@ function dismantle() {
   console.log("Shard ammount result from dismantling SwordArray")
   console.log(ShardArray)
   SwordArray = []
-  updateInventory()
-  updateShardDisplay()
+  updateSwordInventory()
+  updateShardInventory()
 }
 
 function push(type, number) {
@@ -148,47 +148,47 @@ function craft() {
     console.log(SwordArray)
     console.log("Shards left after crafting ShardArray")
     console.log(ShardArray)
-    updateInventory()
-    updateShardDisplay()
+    updateSwordInventory()
+    updateShardInventory()
 }
 
-function updateInventory() {
+function updateSwordInventory() {
   let commonSwordAmount = SwordArray.filter(x => x==="common").length
   let uncommonSwordAmount = SwordArray.filter(x => x==="uncommon").length
   let rareSwordAmount = SwordArray.filter(x => x==="rare").length
   let epicSwordAmount = SwordArray.filter(x => x==="epic").length
   let legendarySwordAmount = SwordArray.filter(x => x==="legendary").length
   let godlySwordAmount = SwordArray.filter(x => x==="godly").length
-  Inventory.innerHTML = ""
+  SwordInventory.innerHTML = ""
   for (let i = 0; i<godlySwordAmount; i++) {
-    Inventory.innerHTML = Inventory.innerHTML + "<GodlySword>Godly</GodlySword>"
+    SwordInventory.innerHTML = SwordInventory.innerHTML + "<GodlyRarityColor>Godly</GodlyRarityColor>"
   }
   for (let i = 0; i<legendarySwordAmount; i++) {
-    Inventory.innerHTML = Inventory.innerHTML + "<LegendarySword>Legendary</LegendarySword>"
+    SwordInventory.innerHTML = SwordInventory.innerHTML + "<LegendaryRarityColor>Legendary</LegendaryRarityColor>"
   }
   for (let i = 0; i<epicSwordAmount; i++) {
-    Inventory.innerHTML = Inventory.innerHTML + "<EpicSword>Epic</EpicSword>"
+    SwordInventory.innerHTML = SwordInventory.innerHTML + "<EpicRarityColor>Epic</EpicRarityColor>"
   }
   for (let i = 0; i<rareSwordAmount; i++) {
-    Inventory.innerHTML = Inventory.innerHTML + "<RareSword>Rare</RareSword>"
+    SwordInventory.innerHTML = SwordInventory.innerHTML + "<RareRarityColor>Rare</RareRarityColor>"
   }
   for (let i = 0; i<uncommonSwordAmount; i++) {
-    Inventory.innerHTML = Inventory.innerHTML + "<UncommonSword>uncommon</UncommonSword>"
+    SwordInventory.innerHTML = SwordInventory.innerHTML + "<UncommonRarityColor>uncommon</UncommonRarityColor>"
   }
   for (let i = 0; i<commonSwordAmount; i++) {
-    Inventory.innerHTML = Inventory.innerHTML + "<CommonSword>Common</CommonSword>"
+    SwordInventory.innerHTML = SwordInventory.innerHTML + "<CommonRarityColor>Common</CommonRarityColor>"
   }
-  SwordAmountDisplay.innerHTML = "</br>" + "Godly swords : " + godlySwordAmount + " Legendary swords : " + legendarySwordAmount + " Epic swords : " + epicSwordAmount + " Rare swords : " + rareSwordAmount + " Uncommon swords : " + uncommonSwordAmount + " Common swords : " + commonSwordAmount
+  SwordAmountDisplay.innerHTML ="<br> </br> <GodlyRarityColor>Godly swords : " + godlySwordAmount + "</GodlyRarityColor> <br> <LegendaryRarityColor>Legendary swords : " + legendarySwordAmount + "</LegendaryRarityColor> <br> <EpicRarityColor>Epic swords : " + epicSwordAmount + "</EpicRarityColor> <br> <RareRarityColor>Rare swords : " + rareSwordAmount + "</RareRarityColor> <br> <UncommonRarityColor>Uncommon swords : " + uncommonSwordAmount + "</UncommonRarityColor> <br> <CommonRarityColor>Common swords : " + commonSwordAmount +"</CommonRarityColor>"
 }
 
-function updateShardDisplay() {
-  ShardDisplay.innerHTML = "<h2>Shards</h2><br> Common Shards : " + ShardArray.CommonShard + "<br>Uncommon Shards : " + ShardArray.UncommonShard + "<br>Rare Shards : " + ShardArray.RareShard + "<br>Epic Shards : " + ShardArray.EpicShard + "<br>Legendary Shards : " + ShardArray.LegendaryShard + "<br>Godly Shards : " + ShardArray.GodlyShard
+function updateShardInventory() {
+  ShardInventory.innerHTML = "<CommonRarityColor>Common Shards : " + ShardArray.CommonShard + "</CommonRarityColor> <br> <UncommonRarityColor>Uncommon Shards : " + ShardArray.UncommonShard + "</UncommonRarityColor> <br> <RareRarityColor>Rare Shards : " + ShardArray.RareShard + "</RareRarityColor> <br> <EpicRarityColor>Epic Shards : " + ShardArray.EpicShard + "</EpicRarityColor> <br> <LegendaryRarityColor>Legendary Shards : " + ShardArray.LegendaryShard + "</LegendaryRarityColor> <br> <GodlyRarityColor>Godly Shards : " + ShardArray.GodlyShard + "</GodlyRarityColor>"
 }
 
 
 
-updateShardDisplay()
-updateInventory()
+updateShardInventory()
+updateSwordInventory()
 
 DismantleButton.addEventListener("click", dismantle)
 CraftButton.addEventListener("click", craft)
@@ -201,8 +201,8 @@ ResetButton.addEventListener("click", function() {
   ShardArray.EpicShard = 0
   ShardArray.LegendaryShard = 0
   ShardArray.GodlyShard = 0
-  updateShardDisplay()
-  updateInventory()
+  updateShardInventory()
+  updateSwordInventory()
 })
 
 AddSwordButton.addEventListener("click", function() {
@@ -222,10 +222,10 @@ AddSwordButton.addEventListener("click", function() {
     push("legendary", document.getElementById("AddLegendarySwordInput").value)
   }
   if (document.getElementById("AddGodlySwordInput").value >0) {
-    push("godly", document.getElementById("AddGodlyInput").value)
+    push("godly", document.getElementById("AddGodlySwordInput").value)
   }
-  updateShardDisplay()
-  updateInventory()
+  updateShardInventory()
+  updateSwordInventory()
 })
 
 AddShardButton.addEventListener("click", function() {
@@ -247,6 +247,6 @@ AddShardButton.addEventListener("click", function() {
   if (document.getElementById("AddGodlyShardInput").value >0) {
     ShardArray.GodlyShard = ShardArray.GodlyShard + Number(document.getElementById("AddGodlyShardInput").value)
   }
-  updateShardDisplay()
-  updateInventory()
+  updateShardInventory()
+  updateSwordInventory()
 })
